@@ -44,7 +44,7 @@ async def main():
 
     @bot.on.message()
     async def send_quote(message: Message):
-        if message.text.lower() == "/рандом":
+        if "рандом" in message.text.lower() or "random" in message.text.lower():
             prompt = ""
         else:
             prompt = message.text
