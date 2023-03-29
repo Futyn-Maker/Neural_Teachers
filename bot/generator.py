@@ -35,6 +35,6 @@ class Generator:
         logger.debug(f"Response: {text}")
 
         quotes = text[0]["generated_text"].split("Преподаватель говорит:")
-        if len(quotes) > 1:
+        if len(quotes) > 2:
             return quotes[1:-1]
         return quotes[1]
