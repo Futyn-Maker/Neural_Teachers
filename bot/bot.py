@@ -47,7 +47,7 @@ async def main():
         if "рандом" in message.text.lower() or "random" in message.text.lower():
             prompt = ""
         else:
-            prompt = message.text
+            prompt = message.text + " "
         # Emulate text typing
         await bot.api.messages.set_activity(
             peer_id=message.peer_id,
