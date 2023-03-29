@@ -1,5 +1,7 @@
 import aiohttp
 
+from loguru import logger
+
 from config import HF_TOKEN, HF_MODEL
 
 
@@ -26,8 +28,11 @@ class Generator:
             "options": {"wait_for_model": True, "use_cache": False}
         }
 
+        logger.debug(f"Request to {self._api_url + self._model_url} with "
+                     f"params: {data}")
         async with self._session.post(self._model_url, json=data) as resp:
             text = await resp.json()
+        logger.debug(f"Response: {text}")
 
         quotes = text[0]["generated_text"].split("Преподаватель говорит:")
         if len(quotes) > 1:

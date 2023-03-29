@@ -16,7 +16,10 @@ from db import Db
 from config import VK_TOKEN, VK_SERVICE_TOKEN, GROUP_ID
 
 
-logger.add("bot.log")  # set the log entry to file
+# Set logging to the file
+
+logger.add("logs/{time}.log", rotation="00:00", level="DEBUG",
+           encoding="utf8", enqueue=True)
 
 bot = Bot(VK_TOKEN)
 bot.labeler.vbml_ignore_case = True  # make message handlers case-insensitive
