@@ -37,4 +37,6 @@ class Generator:
         quotes = text[0]["generated_text"].split("Преподаватель говорит:")
         if len(quotes) > 2:
             return quotes[1:-1]
-        return quotes[1]
+        # If not, this is a bad response, try again
+        logger.debug("Bad response, try again")
+        return await self.generate(prompt)
