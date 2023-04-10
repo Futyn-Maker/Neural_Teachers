@@ -122,9 +122,8 @@ async def post_quote():
 
 
 async def set_scheduler(func):
-    """Forces the specified function to be executed every half hour, exactly at 00 and 30 minutes"""
+    """Forces the specified function to be executed every hour, exactly at 00 minutes"""
     schedule = Scheduler()
-    schedule.hourly(time(minute=30), func)
     schedule.hourly(time(), func)
     while True:
         await asyncio.sleep(1)
